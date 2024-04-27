@@ -21,5 +21,18 @@ return(
         onPress={()=> {navigation.navigate("Color")}}
         title= "Go to Color"
     />
+    <Button  
+        onPress={()=> {navigation.navigate("ColorScreen")}}
+        title= "Go to ColorScreen"
+    />
+    <Button  
+        onPress={()=> {navigation.navigate("TextScreen")}}
+        title= "Go to TextScreen"
+    />
+
+<Button  
+        onPress={()=> {navigation.navigate("FoodScreen")}}
+        title= "Go to FoodScreen"
+    />
 </View>
 )}

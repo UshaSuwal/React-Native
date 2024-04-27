@@ -9,6 +9,9 @@ import { Counter } from './Screen/Counter';
 import { List } from './Screen/List';
 import { ImageScreen } from './Screen/ImageScreen';
 import { Color } from './Screen/Color';
+import { ColorScreen } from './Screen/ColorScreen';
+import { TextScreen } from './Screen/TextScreen';
+import { FoodScreen } from './Screen/FoodScreen';
 
 
 
@@ -23,6 +26,9 @@ function App() {
         <Stack.Screen name="List" component={List} />
         <Stack.Screen name="ImageScreen" component={ImageScreen} />
         <Stack.Screen name="Color" component={Color} />
+        <Stack.Screen name="ColorScreen" component={ColorScreen} />
+        <Stack.Screen name="TextScreen" component={TextScreen} />
+        <Stack.Screen name="FoodScreen" component={FoodScreen} />
       </Stack.Navigator>
   </NavigationContainer>
   )
