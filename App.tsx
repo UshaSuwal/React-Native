@@ -15,6 +15,7 @@ import { ProductScreen } from './Screen/ProductScreen';
 import { Todo } from './Screen/Todo';
 import { Provider } from 'react-redux';
 import MyStore from './reduxtoolkit/MyStore';
+import { CartScreen} from './Screen/CartScreen';
 import { DetailScreen } from './Screen/DetailScreen';
 
 
@@ -35,6 +36,7 @@ function App() {
         <Stack.Screen name="TextScreen" component={TextScreen} />
         <Stack.Screen name="ProductScreen" component={ProductScreen} />
         <Stack.Screen name="Todo" component={Todo} />
+        <Stack.Screen name="CartScreen" component={CartScreen} />
         <Stack.Screen name="DetailScreen" component={DetailScreen} />
       </Stack.Navigator>
   </NavigationContainer>

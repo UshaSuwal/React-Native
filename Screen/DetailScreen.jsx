@@ -1,44 +1,63 @@
-import React from 'react';
-import { FlatList, Text, View, Image, Button } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
-import { removeCartItem } from '../reduxtoolkit/Slice';
+import React from "react";
+import { Text, View, Image, StyleSheet } from "react-native";
 
-export function DetailScreen() {
-  const addedItem = useSelector(state => state);
-  console.log("Not removed",addedItem)
-  const dispatch=useDispatch();
-    const removeItem=item=>{
-        dispatch(removeCartItem(item))
-        console.log("After removed",addedItem)
-    }
-
-
-  
-  const renderItem = ({ item }) => (
-    <View style={{ marginBottom: 10 }}>
-      <Image
-        source={{ uri: item.thumbnail }}
-        style={{ width: 200, height: 200, marginRight: 10 }}
-      />
-      <View>
-        <Text style={{ fontWeight: 'bold', color:"black" }}>{item.title}</Text>
-        <Text style={{ color:"black"}}>{item.description}</Text>
-        <Text style={{ color:"black"}}>Price: ${item.price}</Text>
-        <Text style={{ color:"black"}}>Quantity: {item.quantity}</Text>
-        <Button title='Remove' onPress={()=>{removeItem(item)}}/>
+export function DetailScreen({ route }) {
+  const { product } = route.params;
+  return (
+    <View style={styles.container}>
+      <Image source={{ uri: product.thumbnail }} style={styles.image} />
+      <View style={styles.detailsContainer}>
+        <Text style={styles.title}>{product.title}</Text>
+        <Text style={styles.brand}>{product.brand}</Text>
+        <Text style={styles.description}>{product.description}</Text>
+        <Text style={styles.description}>Category: {product.category}</Text>
+        <Text style={styles.description}>Discount(%): {product.discountPercentage}</Text>
+        <Text style={styles.description}>Stock: {product.stock}</Text>
+        
+        <Text style={styles.price}>${product.price}</Text>
       </View>
     </View>
   );
-
-  return (
-    <View style={{ flex: 1, padding: 20 }}>
-      <Text style={{ color: 'black' }}>Total: {addedItem.cart.length}</Text>
-      <FlatList
-        data={addedItem.cart}
-        renderItem={renderItem}
-        keyExtractor={item => item.id.toString()}
-      />
-      
-    </View>
-  );
 }
+
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    padding: 20,
+    backgroundColor: "#fff",
+  },
+  image: {
+    width: 300,
+    height: 300,
+    marginBottom: 50,
+    resizeMode: "cover",
+    borderRadius: 10,
+  },
+  detailsContainer: {
+    alignItems: "flex-start",
+  },
+  title: {
+    fontSize: 30,
+    fontWeight: "bold",
+    marginBottom: 5,
+    color:"black",
+  },
+  brand: {
+    fontSize: 16,
+    marginBottom: 10,
+    color:"black",
+  },
+  description: {
+    marginBottom: 10,
+    color:"black",
+  },
+  price: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "green",
+    
+  },
+});

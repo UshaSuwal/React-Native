@@ -1,9 +1,9 @@
 import React from 'react';
 import { Button, TextInput, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { Color } from '../Screen/Color';
 
-const SearchBar = ({ term, onNewChange, onTermSubmit, navigation }) => {
+
+const SearchBar = ({ term, onNewChange, onTermSubmit }) => {
   return (
     <View
       style={{
@@ -14,6 +14,7 @@ const SearchBar = ({ term, onNewChange, onTermSubmit, navigation }) => {
         flexDirection: 'row',
         alignItems: 'center',
         paddingHorizontal: 10,
+        marginBottom:20,
       }}>
       <Icon name="search" size={30} color="black" />
       <TextInput
@@ -22,9 +23,10 @@ const SearchBar = ({ term, onNewChange, onTermSubmit, navigation }) => {
         placeholder="Search"
         style={{ flex: 1, paddingLeft: 10 }}
         value={term}
-        onChangeText={onNewChange}
+        onChangeText={(newValue)=>onNewChange(newValue)}
+        onEndEditing={onTermSubmit}
       />
-      <Button title='Search' style={{color:"black"}} onPress={onTermSubmit}/>
+      
       
     </View>
   );
