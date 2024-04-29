@@ -13,6 +13,9 @@ import { ColorScreen } from './Screen/ColorScreen';
 import { TextScreen } from './Screen/TextScreen';
 import { ProductScreen } from './Screen/ProductScreen';
 import { Todo } from './Screen/Todo';
+import { Provider } from 'react-redux';
+import MyStore from './reduxtoolkit/MyStore';
+import { DetailScreen } from './Screen/DetailScreen';
 
 
 
@@ -20,6 +23,7 @@ const Stack= createNativeStackNavigator();
 function App() {
 
   return (
+    <Provider store={MyStore}>
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={Home} />
@@ -31,8 +35,10 @@ function App() {
         <Stack.Screen name="TextScreen" component={TextScreen} />
         <Stack.Screen name="ProductScreen" component={ProductScreen} />
         <Stack.Screen name="Todo" component={Todo} />
+        <Stack.Screen name="DetailScreen" component={DetailScreen} />
       </Stack.Navigator>
   </NavigationContainer>
+  </Provider>
   )
 
 }

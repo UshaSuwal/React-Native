@@ -1,11 +1,23 @@
 import React, { useState } from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView, Button } from 'react-native';
 import SearchBar from '../components/SearchBar';
 import useSearch from '../hooks/useSearch';
+import { useSelector, useDispatch } from 'react-redux';
+import { addCartItem } from '../reduxtoolkit/Slice';
 
-export function ProductScreen() {
+export function ProductScreen({navigation}) {
   const [results, searchApi, errorMessage] = useSearch();
   const [term, setTerm] = useState('');
+  const [total, setTotal]=useState(0);
+  const dispatch = useDispatch();
+   
+
+  const addItem = (item) => {
+    if (item){
+    dispatch(addCartItem(item));
+    setTotal(total+1)
+    }
+  }
 
   return (
     <View style={styles.container}>
@@ -14,6 +26,8 @@ export function ProductScreen() {
         onNewChange={setTerm}
         onTermSubmit={() => searchApi(term)}
       />
+      <Text style={{ color: "black", fontSize: 30 }}>Total: {total}</Text>
+      <Button title='Cart' style={{color:"black"}} onPress={()=> {navigation.navigate("DetailScreen")}}/>
       {errorMessage ? <Text style={styles.errorText}>{errorMessage}</Text> : null}
       <ScrollView>
         <View style={styles.resultsContainer}>
@@ -23,6 +37,7 @@ export function ProductScreen() {
               <Text style={styles.productBrand}>{product.brand}</Text>
               <Text style={styles.productTitle}>{product.title}</Text>
               <Text style={styles.productPrice}>${product.price}</Text>
+              <Button title='cart' onPress={() => { addItem(product) }} />
             </TouchableOpacity>
           ))}
         </View>
@@ -43,7 +58,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   resultsContainer: {
-    top:20,
+    top: 20,
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',

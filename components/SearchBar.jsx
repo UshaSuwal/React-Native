@@ -3,7 +3,7 @@ import { Button, TextInput, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Color } from '../Screen/Color';
 
-const SearchBar = ({ term, onNewChange, onTermSubmit }) => {
+const SearchBar = ({ term, onNewChange, onTermSubmit, navigation }) => {
   return (
     <View
       style={{
@@ -25,6 +25,7 @@ const SearchBar = ({ term, onNewChange, onTermSubmit }) => {
         onChangeText={onNewChange}
       />
       <Button title='Search' style={{color:"black"}} onPress={onTermSubmit}/>
+      
     </View>
   );
 };
