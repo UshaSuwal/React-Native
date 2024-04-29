@@ -31,8 +31,12 @@ return(
     />
 
 <Button  
-        onPress={()=> {navigation.navigate("FoodScreen")}}
-        title= "Go to FoodScreen"
+        onPress={()=> {navigation.navigate("ProductScreen")}}
+        title= "Go to ProductScreen"
+    />
+    <Button  
+        onPress={()=> {navigation.navigate("Todo")}}
+        title= "Go to Todo"
     />
 </View>
 )}

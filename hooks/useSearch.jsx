@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 const useSearch = () => {
   const [results, setResults] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
-  console.log("Length of results from useSearch::::::::",results.length)
+  // console.log("Length of results from useSearch::::::::",results)
 
 
   const searchApi = searchTerm => {
@@ -35,7 +35,7 @@ const useSearch = () => {
   
 
   useEffect(() => {
-    searchApi('phone');
+    searchApi('');
   }, []);
  
   return [results, searchApi, errorMessage];

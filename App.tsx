@@ -11,7 +11,8 @@ import { ImageScreen } from './Screen/ImageScreen';
 import { Color } from './Screen/Color';
 import { ColorScreen } from './Screen/ColorScreen';
 import { TextScreen } from './Screen/TextScreen';
-import { FoodScreen } from './Screen/FoodScreen';
+import { ProductScreen } from './Screen/ProductScreen';
+import { Todo } from './Screen/Todo';
 
 
 
@@ -28,7 +29,8 @@ function App() {
         <Stack.Screen name="Color" component={Color} />
         <Stack.Screen name="ColorScreen" component={ColorScreen} />
         <Stack.Screen name="TextScreen" component={TextScreen} />
-        <Stack.Screen name="FoodScreen" component={FoodScreen} />
+        <Stack.Screen name="ProductScreen" component={ProductScreen} />
+        <Stack.Screen name="Todo" component={Todo} />
       </Stack.Navigator>
   </NavigationContainer>
   )
